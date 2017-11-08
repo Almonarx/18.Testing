@@ -34,7 +34,7 @@ const testFunc = (input) => {
 const getDay = () => new Date().getDay();
 
 testFunc(getDay()).defined();
-testFunc(getDay()).equal(2);
+testFunc(getDay()).equal(new Date().getDay());
 
 const getAdultUsers = (users = []) => users.filter(user => user.age > 18);
 
