@@ -4,7 +4,7 @@ const { expect } = chai;
 
 describe('getDay func testing', () => {
     it('should not equal undefined', () => {
-        expect(getDay()).to.not.equal('undefined');
+        expect(getDay()).to.not.equal(undefined);
     });
 
     it('should equal current day', () => {
@@ -25,8 +25,8 @@ describe('getAdultUsers func testing', () => {
 });
 
 describe('getRandomUsers func testing', () => {
-    it('should not equal false', () => {
-        expect(getRandomUsers()).to.not.equal('false');
+    it('should equal false', () => {
+        expect(getRandomUsers()).equal(false);
     });
 
     it('should equal last four values', () => {
