@@ -1,8 +1,17 @@
-export const users = [{age: 15}, {age: 14}, {age: 28}, {age: 18}, {age: 45}, {age: 68}, {age: 38}, {age: 22}, {age: 14}];
+import $ from 'jquery';
+window.$ = $;
+import { days, defaultProduct, money, users } from './constants';
 
-export const getDay = () => new Date().getDay();
+export const showMessage = (text) => {
+    alert(text);
+};
+
+export const getDay = () => {
+    return days[new Date().getDay()];
+};
 
 export const getAdultUsers = (users = []) => users.filter(user => user.age > 18);
+getAdultUsers(users);
 
 export const getRandomUsers = (users) => {
     const numb = Math.random();
@@ -19,4 +28,41 @@ export const getRandomUsers = (users) => {
     }
 
     return users.slice(middleUser, length);
+};
+
+export class Product {
+    constructor(title, price) {
+        this.title = title || defaultProduct;
+        this.price = price || 10;
+    }
+
+    getPrice() {
+        return this.price + money;
+    }
+
+    setPrice(value) {
+        if (!value) {
+            throw new Error('Process should be defined');
+        }
+
+        if (value > 10) {
+            this.price = value;
+        }
+    }
+}
+
+export const getUsers = () => {
+    const url = 'https://jsonplaceholder.typicode.com/users';
+
+    return window.$.get(url)
+        .then(console.log)
+        .catch(console.error);
+};
+
+export const postUser = (data) => {
+    const url = 'https://jsonplaceholder.typicode.com/users';
+
+    return window.$.post(url, data)
+        .then(console.log)
+        .catch(console.error);
 };
